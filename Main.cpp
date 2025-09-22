@@ -10,7 +10,7 @@ int main()
 		sum += i;
 	}
 
-	cout << "Summary : " << sum;
+	cout << "Summary : " << sum << endl << endl;
 
 	sum = 0;
 	for (int i = 3; i < 101; i += 3)
