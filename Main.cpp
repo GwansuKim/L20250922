@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <Windows.h>
 #include <string>
 
 using namespace std;
@@ -37,32 +38,44 @@ void Input()
 	KeyCode = _getch();
 }
 
+bool Predict(int NewX, int NewY)
+{
+	if (Map[NewY][NewX] == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void Process()
 {
 	if (KeyCode == 'w')
 	{
-		if (Map[Player[1] - 1][Player[0]] != 1)
+		if (Predict(Player[0], Player[1] - 1))
 		{
 			Player[1]--;
 		}
 	}
 	else if (KeyCode == 's')
 	{
-		if (Map[Player[1] + 1][Player[0]] != 1)
+		if (Predict(Player[0], Player[1] + 1))
 		{
 			Player[1]++;
 		}
 	}
 	else if (KeyCode == 'a')
 	{
-		if (Map[Player[1]][Player[0] - 1] != 1)
+		if (Predict(Player[0] - 1, Player[1]))
 		{
 			Player[0]--;
 		}
 	}
 	else if (KeyCode == 'd')
 	{
-		if (Map[Player[1]][Player[0] + 1] != 1)
+		if (Predict(Player[0] + 1, Player[1]))
 		{
 			Player[0]++;
 		}
@@ -96,6 +109,93 @@ void Render()
 //entry
 int main()
 {
+	int Sum = 0;
+	for (int i = 1; i < 101; i++)
+	{
+		Sum += i;
+	}
+
+	cout << "Summary : " << Sum << endl << endl;
+
+	Sum = 0;
+	for (int i = 3; i < 101; i += 3)
+	{
+		Sum += i;
+	}
+
+	cout << "Mul of 3 : " << Sum;
+
+	char Trash = _getch();
+	system("cls");
+
+	// 전부 0으로 초기화
+	int Number[10] = { 0, };
+
+	for (int j = 0; j < 10; j++)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			Number[i] = i + 1;
+		}
+	}
+
+	//*****
+	//****
+	//***
+	//**
+	//*
+	for (int i = 5; i > 0; i--)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			cout << "*";
+		}
+		cout << "\n";
+	}
+	Trash = _getch();
+	system("cls");
+
+	//사람이 이해하기 편함
+	int Count = 0;
+	cout << "숫자를 입력해 주세요 : ";
+	cin >> Count;
+	for (int i = 1; i <= Count; i++)
+	{
+		for (int j = 1; j <= Count; j++)
+		{
+			if (j >= i)
+			{
+				cout << "*";
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+		cout << "\n";
+	}
+
+	//성능우선
+	for (int i = 1; i <= Count; i++)
+	{
+		for (int j = 1; j < i; j++)
+		{
+			cout << " ";
+		}
+		for (int j = i; j <= Count; j++)
+		{
+			cout << "*";
+		}
+		cout << "\n";
+	}
+	Trash = _getch();
+	system("cls");
+
+	COORD Cur;
+	Cur.X = Player[0];
+	Cur.Y = Player[1];
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+
 	while (bIsContinue) {
 		Input();
 
@@ -105,6 +205,16 @@ int main()
 		Process();
 		Render();
 	}
+	Trash = _getch();
+	system("cls");
+
+	char Greeting[6] = "hello";
+	cout << &Greeting[0] << endl;
+
+	string Str = "hello";
+	string Str2 = "world";
+
+	cout << Str + " " + Str2 << endl;
 
 
 	return 0;
