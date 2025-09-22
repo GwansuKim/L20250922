@@ -58,9 +58,12 @@ int main()
 	//  ***
 	//   **
 	//    *
-	for (int i = 1; i <= 5; i++)
+	int Count = 0;
+	cout << "숫자를 입력해 주세요 : ";
+	cin >> Count;
+	for (int i = 1; i <= Count; i++)
 	{
-		for (int j = 1; j <= 5; j++)
+		for (int j = 1; j <= Count; j++)
 		{
 			if (j >= i)
 			{
@@ -79,13 +82,13 @@ int main()
 	//  ***
 	//   **
 	//    *
-	for (int i = 1; i <= 5; i++)
+	for (int i = 1; i <= Count; i++)
 	{
 		for (int j = 1; j < i; j++)
 		{
 			cout << " ";
 		}
-		for (int j = i; j <= 5; j++)
+		for (int j = i; j <= Count; j++)
 		{
 			cout << "*";
 		}
