@@ -13,12 +13,9 @@ int main()
 	cout << "Summary : " << sum;
 
 	sum = 0;
-	for (int i = 1; i < 101; i++)
+	for (int i = 3; i < 101; i += 3)
 	{
-		if (i % 3 == 0)
-		{
-			sum += i;
-		}
+		sum += i;
 	}
 
 	cout << "Mul of 3 : " << sum;
